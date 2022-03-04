@@ -1,19 +1,21 @@
 import random
 from os import system
 
+
+
 system('clear')
 
 
 def read():
     global palabra
     palabra = []
-    with open ("/home/franki/Documents/Code/Cursos/Python/hangman_game/data/data.txt", "r", encoding="utf-8") as f:
+    with open ("./data/data.txt", "r", encoding="utf-8") as f:
         for line in f:
             palabra.append(str.strip(line))
 
 def write():
     palabras = [input(str("Agrega una palabra: "))]
-    with open("/home/franki/Documents/Code/Cursos/Python/hangman_game/data/data.txt", "a", encoding="utf-8") as f:
+    with open("./data/data.txt", "a", encoding="utf-8") as f:
         for palabra_agregada in palabras:
             f.write("\n")
             f.write(palabra_agregada)
@@ -121,13 +123,15 @@ def game():
                 break
      
     while True:
-        reset = int(input("\n \n Volver a Jugar? [1] Si / [2] No: "))
-        if reset == 2:
+        reset = int(input("\n \n ¿Volver al menú principal? [1] Si / [2] No: "))
+        if reset == 1:
             system("clear")
             break
-        else:
+        elif reset == 2:
             system("clear")
-            run()
+            exit()
+        else:
+            print("Elige una opcion valida")
 
 def run():
     while True:
@@ -145,7 +149,8 @@ def run():
         elif bienvenidos == 2:
             write()
         elif bienvenidos == 3:
-            break
+            system("clear")
+            exit()
         else:
             print("Elije una opcion valida")
 
